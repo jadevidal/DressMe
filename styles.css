@@ -1,6 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: Comf, sans-serif;
+    background-color: #f7a9cb;
+    color: #fde2f5;
     margin: 0;
     padding: 0;
 
@@ -10,11 +17,4 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-button {
-    background-color: #ab4991;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;}
 }
