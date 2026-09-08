@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>DressMe Registration</title>
+      <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  
+  <body>
+    <div class="register-container">
+      <h1>Dress Me</h1>
+      <h2>Welcome!</h2>
+
+      <form>
+        <input type="text" placeholder="First Name" required> 
+        <input type="text" placeholder="Last Name" required>
+        <input type="date" placeholder = "Date of Birth" required>
+
+        <!--need to check if email is already registered-->
+        <input type="email" placeholder="Email" required> 
+
+        <input type="password" id = password placeholder="Create Password" required>
+        <input type="password" id = confirm_password placeholder="Confirm Password" required>
+        <button type="submit">Log In</button>    
+      </form>
+      
+    </div>
+    
+    <!--js code to check if passwords match-->
+    <script>
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirm_password");
+
+        function validatePassword() {
+        if (password.value !== confirmPassword.value) {
+            confirmPassword.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirmPassword.setCustomValidity("");
+        }
+        }
+        password.onchange = validatePassword;
+        confirmPassword.onkeyup = validatePassword;
+    </script>
+
+  </body>
+
+
+</html>
