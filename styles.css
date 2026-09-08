@@ -17,11 +17,7 @@ nav {
     align-items: center;
     border-bottom: 3px solid white;
 }
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fde2f5;
-}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -61,7 +57,7 @@ main p {
 }
 button {
     padding: 10px 20px;
-    background-color: #fde2f5;
+    background-color: #fb85ac;
     color: white;
     border: none;
     padding: 12px 25 px;
