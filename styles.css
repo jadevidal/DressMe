@@ -60,7 +60,7 @@ button {
     background-color: #fb85ac;
     color: white;
     border: none;
-    padding: 12px 25 px;
+    padding: 12px 25px;
     border-radius: 25px;
     cursor: pointer;
     font-size: 20px;
@@ -76,4 +76,147 @@ input {
     width: 800px;
     height: auto;
     margin-bottom: 10px;
+}
+
+/*login page*/
+.login-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 40px;
+    background-color: #fde2f5;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.login-container h1 {
+    font-size: 50px;
+    font-family: "Pacifico", cursive;
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: #e770a3;
+}
+
+.login-container h3 {
+    font-family: "Pacifico", cursive;
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #e5a4c0;
+}
+
+.login-container form {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #dba0ba;
+    border-radius: 20px;
+    text-align: left;
+    
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #e770a3;
+    font-weight: bold;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {   
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #dba0ba;
+    border-radius: 5px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #fb85ac;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.login-container button:hover {
+    background-color: #e770a3;
+}
+
+.login-container p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #e770a3;
+}
+.login-container p a {
+    color: #e5a4c0;
+    font-weight: bold;
+}
+
+/*register page*/
+.register-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 50px;
+    background-color: #fde2f5;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.register-container h1 {
+    font-family: "Pacifico", cursive;
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 2px;
+    color: #e770a3;
+}
+
+.register-container h3 {
+    font-family: "Pacifico", cursive;
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #e5a4c0;
+}
+
+.register-container form {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #dba0ba;
+    border-radius: 20px;
+    text-align: left;
+    
+}
+
+.register-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #e770a3;
+    font-weight: bold;
+}
+
+.register-container input[type="text"],
+.register-container input[type="password"],
+.register-container input[type="date"] {   
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #dba0ba;
+    border-radius: 5px;
+}
+
+.register-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #fb85ac;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.register-container button:hover {
+    background-color: #e770a3;
 }

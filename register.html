@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>DressMe Registration</title>
-      <link rel="stylesheet" href="styles.css">
+    <title>DressMe Registration</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   
-  <body>
-    <div class="register-container">
-      <h1>Dress Me</h1>
-      <h3>Welcome!</h3>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register</a></li>
-        </ul>
-      </nav>
-      <form>
-        <input type="text" placeholder="First Name" required> 
-        <input type="text" placeholder="Last Name" required>
-        <input type="date" placeholder = "Date of Birth" required>
+<body>
 
-        <!--need to check if username is already registered in database-->
-        <input type="text" placeholder="Create Username" required> 
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="register.html">Register</a></li>
+  </ul>
+</nav>
 
-        <input type="password" id = password placeholder="Create Password" required>
-        <input type="password" id = confirm_password placeholder="Confirm Password" required>
-        <button type="submit">Register</button>    
-      </form>
-      
-    </div>
+<main class="register-container">
+  <h1>Dress Me</h1>
+  <h3>Welcome!</h3>
+
+  <form>
+    <input type="text" placeholder="First Name" required>
+    <input type="text" placeholder="Last Name" required>
+    <input type="date" required>
+
+    <!-- Need to check if username is already registered in database -->
+    <input type="text" placeholder="Create Username" required>
+
+    <input type="password" id="password" placeholder="Create Password" required>
+    <input type="password" id="confirm_password" placeholder="Confirm Password" required>
+
+    <button type="submit">Register</button>
+  </form>
+</main>
     
-    <!--js code to check if passwords match-->
-    <script>
-        const password = document.getElementById("password");
-        const confirmPassword = document.getElementById("confirm_password");
+  <!--js code to check if passwords match-->
+  <script>
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirm_password");
 
-        function validatePassword() {
-        if (password.value !== confirmPassword.value) {
-            confirmPassword.setCustomValidity("Passwords Don't Match");
-        } else {
-            confirmPassword.setCustomValidity("");
-        }
-        }
-        password.onchange = validatePassword;
-        confirmPassword.onkeyup = validatePassword;
-    </script>
+    function validatePassword() {
+      if (password.value !== confirmPassword.value) {
+        confirmPassword.setCustomValidity("Passwords Don't Match");
+      } else {
+        confirmPassword.setCustomValidity("");
+      }
+    }
+    
+    password.onchange = validatePassword;
+    confirmPassword.onkeyup = validatePassword;
+  </script>
 
-  </body>
+</body>
 
 
 </html>
