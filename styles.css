@@ -80,6 +80,7 @@ input {
 
 /*login page*/
 .login-container {
+    animation: fadeIn 1s ease-in-out;
     width: 400px;
     margin: 100px auto;
     padding: 40px;
