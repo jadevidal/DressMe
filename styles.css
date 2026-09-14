@@ -6,6 +6,7 @@
 
 body {
     font-family: Comf, sans-serif;
+    background: radial-gradient(circle at top, #ffd6eb, #f7a9cb 55%, #e770a3);
     background-color: #f7a9cb;
     color: #fde2f5;
 }
@@ -78,9 +79,9 @@ input {
     margin-bottom: 10px;
 }
 
+
 /*login page*/
 .login-container {
-    animation: fadeIn 1s ease-in-out;
     width: 400px;
     margin: 100px auto;
     padding: 40px;
@@ -95,6 +96,7 @@ input {
     font-weight: bold;
     margin-bottom: 2px;
     color: #e770a3;
+    animation: softFadeIn 1.5s ease-in-out;
 }
 
 .login-container h3 {
@@ -102,6 +104,8 @@ input {
     font-size: 25px;
     margin-bottom: 20px;
     color: #e5a4c0;
+    animation: softFadeOut 1.5s ease-in-out;
+
 }
 
 .login-container form {
@@ -171,6 +175,8 @@ input {
     font-size: 50px;
     margin-bottom: 2px;
     color: #e770a3;
+    animation: softFadeIn 1.5s ease-in-out;
+
 }
 
 .register-container h3 {
@@ -178,6 +184,8 @@ input {
     font-size: 25px;
     margin-bottom: 20px;
     color: #e5a4c0;
+    animation: softFadeOut 1.5s ease-in-out;
+
 }
 
 .register-container form {
@@ -221,3 +229,28 @@ input {
 .register-container button:hover {
     background-color: #e770a3;
 }
+
+@keyframes softFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes softFadeOut {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
