@@ -2,16 +2,29 @@
 <html>
     <head>
         <title>DressMe Login Page</title>
-        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
-
+    
     <body>
-        <h1>Welcome to DressMe!</h1>
-        
-        <form>
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <button type="submit">Login</button>
-        </form>
-    </body>
+        <nav>
+            <div class="logo">
+            </div>
+
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            
+        </ul>
+
+        </nav>
+    
+    
+    <main>
+        <img src="images/dressme-logo.png" alt="DressMe Logo" class="main-logo">
+        <h2>Welcome!</h2>
+        <p>Looking for a fun way to organize your closet? 
+            Try DressMe, a digit closet for all!</p>
+    </main>
+</body>
 </html>
