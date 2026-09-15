@@ -6,7 +6,7 @@
 
 body {
     font-family: Comf, sans-serif;
-    background-color: #f7a9cb;
+    background-color: #FFE2E7;
     color: #fde2f5;
 }
 nav {
@@ -84,7 +84,7 @@ input {
     width: 400px;
     margin: 100px auto;
     padding: 40px;
-    background-color: #fde2f5;
+    background-color: #f8c5db;
     border-radius: 20px;
     text-align: center;
 }
@@ -163,7 +163,7 @@ input {
     width: 400px;
     margin: 100px auto;
     padding: 50px;
-    background-color: #fde2f5;
+    background-color: #f8c5db;
     border-radius: 20px;
     text-align: center;
 }
@@ -253,3 +253,22 @@ input {
     }
 }
 
+/*landing page text bubble*/
+.text-container {
+    width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #f7a9cb;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.text-container h2 {
+    color: #fde2f5;
+    margin-bottom: 10px;
+}
+
+.text-container p {
+    color: #fde2f5;
+    font-size: 18px;
+}
