@@ -275,6 +275,27 @@ input {
 
 
 /*Wardrobe page*/
+
+.wardrobe-wrapper {
+    display: flex;
+    gap: 40px;                     
+    padding: 30px;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.left-column {
+    flex: 3;
+    display: flex;
+    flex-direction: column; 
+    gap:30px
+}
+
+.right-column {
+    flex: 2;
+}
+
 .small-logo {
     width: 300px;
     border-radius: 10px;
@@ -282,19 +303,30 @@ input {
     text-align: center;
 }
 
+/* Add Item Section */
 .input-container h2{
+    font-family: "Pacifico";
     color: #e770a3;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     text-align: left;
 }
 
-.input-container form {   
-    width: 30%;
+.input-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     padding: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
     border: 1px solid #dba0ba;
     border-radius: 5px;
     text-align: left;
+}
+
+.input-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #dba0ba;
 }
 
 .input-container button {
@@ -311,8 +343,23 @@ input {
 }
 
 .input-container p {
+    text-align: center;
+    margin: 10px 0;
     color: #e770a3;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.input-container .category-section button {
+    margin: 2px 0px;
+    margin-bottom: 15px;
+    padding: 5px 5px;
+    border: none;
+    font-size: 14px;
+    background-color: #f3aec5;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
 }
 
 .input-container label {
@@ -320,12 +367,45 @@ input {
     font-weight: bold;
 }
 
+/* Outfit Preview Section */
+.outfit-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1.5;
+    width: 600px;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid #dba0ba;
+    text-align: center;
+}
 
+/* Wardrobe Section */
 .wardrobe-container h2 {
+    font-family: "Pacifico";
     color: #e770a3;
-    margin-top: 200px;
     margin-bottom: 25px;
     text-align: left;
     
 }
+.wardrobe-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1.5;
+    width: 600px;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #dba0ba;
+    text-align: left;
+}
+
+.wardrobe-container p {
+    color: #e770a3;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+
 

@@ -6,43 +6,106 @@
     </head>
     
     <body>
+
         <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            
-        </ul>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
         </nav>
 
-    <main>
-        <img src="images/Dressme.png" alt="DressMe Logo" class="small-logo" width="300">
+        <main>
 
-        <div class="input-container">
-            <h2>Add Item</h2>
-            
-            <p></p>
+            <img src="images/Dressme.png" 
+                 alt="DressMe Logo" 
+                 class="small-logo" 
+                 width="300">
 
-            <form>
-                <input type="text" placeholder="Item Name" required>
-               
-               
-                <label for="categorySelect"></label>
-                <select id="categorySelect">
-                    <option value="Category">Category</option>
-                </select> 
+            <!-- Wardrobe Wrapper -->
+            <div class="wardrobe-wrapper">
+
+                <div class="left-column">
+                    <!-- Add Item Section -->
+                    <div class="input-container">
+                        <h2>Add Item</h2>
+
+                        <form>
+                            <input type="text" 
+                                placeholder="Item Name" 
+                                required>
+
+                            <!-- Image Upload Section -->
+                            <input type="file" accept="image/*">
+
+                            <!-- Category Section-->
+                            <div class="category-section">
+
+                                <select id="categorySelect">
+                                    <option value="">Choose category</option>
+                                </select>
+                                <p>or</p>
+                                <button type="button">+ Create Category</button>
+
+                            </div>
+
+                            <label for="temperature">Temperature Rating:</label>
+
+                            <!-- Temperature Rating Section -->
+                            <input 
+                                type="range" 
+                                id="temperature" 
+                                name="temperature"
+                                min="0"
+                                max="100"
+                                value="65"
+                            >
+                            <span id="temperatureValue">65°F</span>
+                    
+
+                            <button type="submit">Submit</button>
+
+                        </form>
+
+                    </div>
 
 
-                <button type="submit">Submit</button>
-            </form>
+                    <!-- Wardrobe Section -->
+                    <div class="wardrobe-container">
 
-        </div>
+                        <h2>My Wardrobe</h2>
 
-        <div class="wardrobe-container">
-            <h2>My Wardrobe</h2>
-            <div class="wardrobe-item">
-                <img src="images/wardrobe1.jpg" alt="Wardrobe Item 1">
-                <p>Item Name</p>
-            
+                        <div class="wardrobe-item">
+
+                            <img src="images/wardrobe1.jpg" alt="Item name">
+
+                            <p>Category</p>
+
+                        </div>
+
+                    </div>
+                </div>  
+
+                <div class="right-column">
+
+                    <!-- Outfit Preview Section -->
+                    <div class="outfit-container">
+
+                        <h2>My Outfit</h2>
+
+                        <div class="outfit-item">
+
+                            <img src="images/wardrobe1.jpg" alt="Item name">
+                            
+                        </div>
+
+                    </div>
+                </div>
+                
             </div>
-    </main>
-</body>
+
+
+        
+
+        </main>
+
+    </body>
 </html>
