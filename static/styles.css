@@ -409,3 +409,8 @@ input {
 
 
 
+.hero-logo {
+    width: 450px;
+    max-width: 80%;
+    height: auto;
+}

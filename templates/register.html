@@ -8,28 +8,25 @@
 <body>
 
 <nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="login.html">Login</a></li>
-    <li><a href="register.html">Register</a></li>
-  </ul>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+    </ul>
 </nav>
 
 <main class="register-container">
   <h1>Dress Me</h1>
   <h3>Welcome!</h3>
 
-  <form>
-    <input type="text" placeholder="First Name" required>
-    <input type="text" placeholder="Last Name" required>
-    <input type="date" required>
+  <form action="{{ url_for('register') }}" method="POST">
+    <input type="text" name="first_name" placeholder="First Name" required>
+    <input type="text" name="last_name" placeholder="Last Name" required>
+    <input type="date" name="birthdate" required>
 
-    <!-- Need to check if username is already registered in database -->
-    <input type="text" placeholder="Create Username" required>
-
-    <input type="password" id="password" placeholder="Create Password" required>
-    <input type="password" id="confirm_password" placeholder="Confirm Password" required>
-
+    <input type="text" name="username" placeholder="Create Username" required>
+    <input type="password" name="password" id="password" placeholder="Create Password" required>
+    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
     <button type="submit">Register</button>
   </form>
 </main>
