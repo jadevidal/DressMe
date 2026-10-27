@@ -20,53 +20,71 @@
                  class="small-logo" 
                  width="300">
 
+
+
+                 
             <!-- Wardrobe Wrapper -->
             <div class="wardrobe-wrapper">
 
                 <div class="left-column">
                     <!-- Add Item Section -->
-                    <div class="input-container">
-                        <h2>Add Item</h2>
-
+                    <button id="openBtn">Add Item</button>
+                    <dialog id="popupDialog">
                         <form>
-                            <input type="text" 
-                                placeholder="Item Name" 
-                                required>
+                            <label for="itemType">Item Type:</label>
+                            <select id="itemType" name="itemType" required>
+                                <option value="">Choose Type</option>
+                                <option value="top">Top</option>
+                                <option value="bottom">Bottom</option>
+                                <option value="dress">Dress</option>
+                                <option value="outerwear">Outerwear</option>
+                                <option value="accessory">Accessory</option>
+                            </select>
 
-                            <!-- Image Upload Section -->
-                            <input type="file" accept="image/*">
+                            <label for="itemImage">Upload Image:</label>
+                            <input type="file" id="itemImage" name="itemImage" accept="image/*" required>
 
-                            <!-- Category Section-->
-                            <div class="category-section">
+                            <label for="category">Category:</label>
+                            <select id="category" name="category" required>
+                                <option value="">Choose category</option>
+                                <option value="casual">Casual</option>
+                                <option value="formal">Formal</option>
+                                <option value="sportswear">Sportswear</option>
+                                <option value="workwear">Workwear</option>
+                            </select>
 
-                                <select id="categorySelect">
-                                    <option value="">Choose category</option>
-                                </select>
-                                <p>or</p>
-                                <button type="button">+ Create Category</button>
+                            <label for="season">Season:</label>
+                            <select id="season" name="season" required>
+                                <option value="">Choose season</option>
+                                <option value="spring">Spring</option>
+                                <option value="summer">Summer</option>
+                                <option value="fall">Fall</option>
+                                <option value="winter">Winter</option>
+                            </select>
 
-                            </div>
+                            <label for="color">Color:</label>
+                            <input type="color" id="color" name="color" value="#ff0000">
 
-                            <label for="temperature">Temperature Rating:</label>
-
-                            <!-- Temperature Rating Section -->
-                            <input 
-                                type="range" 
-                                id="temperature" 
-                                name="temperature"
-                                min="0"
-                                max="100"
-                                value="65"
-                            >
-                            <span id="temperatureValue">65°F</span>
-                    
+                            <label for="description">Description:</label>
+                            <textarea id="description" name="description" rows="4" placeholder="Enter a description for the item"></textarea>
 
                             <button type="submit">Submit</button>
-
+                            <button type="button" id="closeBtn">Close</button>
                         </form>
+                    </dialog>
+                    <script>
+                        const openBtn = document.getElementById('openBtn');
+                        const closeBtn = document.getElementById('closeBtn');
+                        const popupDialog = document.getElementById('popupDialog');
 
-                    </div>
+                        openBtn.addEventListener('click', () => {
+                            popupDialog.showModal();
+                        });
 
+                        closeBtn.addEventListener('click', () => {
+                            popupDialog.close();
+                        });
+                    </script>
 
                     <!-- Wardrobe Section -->
                     <div class="wardrobe-container">
@@ -85,6 +103,8 @@
                 </div>  
 
                 <div class="right-column">
+                    <!--Favorites section-->
+                    <a href="favorites.html" target="_blank" rel="noopener noreferrer">Favorites</a>
 
                     <!-- Outfit Preview Section -->
                     <div class="outfit-container">
