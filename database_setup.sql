@@ -45,17 +45,6 @@ CREATE TABLE IF NOT EXISTS favorites (
         ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS calendar_outfits (
-    calendar_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    outfit_id INT NOT NULL,
-    planned_date DATE NOT NULL,
-    notes VARCHAR(255),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-        ON DELETE CASCADE,
-    FOREIGN KEY (outfit_id) REFERENCES outfits(outfit_id)
-        ON DELETE CASCADE
-);
 
 CREATE TABLE IF NOT EXISTS style_preferences (
     preference_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -67,4 +56,14 @@ CREATE TABLE IF NOT EXISTS style_preferences (
         ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
         ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    category_name VARCHAR(100) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE CASCADE,
+    UNIQUE (user_id, category_name)
 );
