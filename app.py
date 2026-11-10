@@ -1,7 +1,9 @@
+
 from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 import os
 from dotenv import load_dotenv
+from werkzeug.security import generate_password_hash, check_password_hash
 
 load_dotenv()
 
@@ -35,15 +37,15 @@ def login():
 
         sql = """
         SELECT * FROM users
-        WHERE username = %s AND password = %s
+        WHERE username = %s
         """
 
-        cursor.execute(sql, (username, password))
+        cursor.execute(sql, (username,))
         user = cursor.fetchone()
 
         cursor.close()
 
-        if user:
+        if user and check_password_hash(user["password"], password):
             return redirect(url_for("home"))
         else:
             return "Incorrect username or password"
@@ -61,14 +63,15 @@ def register():
         last_name = request.form["last_name"]
         birthdate = request.form["birthdate"]
         username = request.form["username"]
+        email = request.form["email"]
         password = request.form["password"]
 
         cursor = db.cursor()
 
-        # Check whether username already exists
+        # Check whether username or email already exists
         cursor.execute(
-            "SELECT user_id FROM users WHERE username = %s",
-            (username,)
+            "SELECT user_id FROM users WHERE username = %s OR email = %s",
+            (username, email)
         )
 
         existing_user = cursor.fetchone()
@@ -77,14 +80,14 @@ def register():
             cursor.close()
             return render_template(
                 "register.html",
-                error="Username already taken."
+                error="Username or email already taken."
             )
 
         # Create account
         sql = """
         INSERT INTO users
-        (first_name, last_name, birthdate, username, password)
-        VALUES (%s, %s, %s, %s, %s)
+        (first_name, last_name, birthdate, username, email, password)
+        VALUES (%s, %s, %s, %s, %s, %s)
         """
 
         values = (
@@ -92,7 +95,8 @@ def register():
             last_name,
             birthdate,
             username,
-            password
+            email,
+            generate_password_hash(password)
         )
 
         cursor.execute(sql, values)

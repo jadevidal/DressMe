@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>DressMe Registration</title>
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   </head>
-  
+
 <body>
 
 <nav>
@@ -19,18 +20,23 @@
   <h1>Dress Me</h1>
   <h3>Welcome!</h3>
 
+  {% if error %}
+    <p>{{ error }}</p>
+  {% endif %}
+
   <form action="{{ url_for('register') }}" method="POST">
     <input type="text" name="first_name" placeholder="First Name" required>
     <input type="text" name="last_name" placeholder="Last Name" required>
     <input type="date" name="birthdate" required>
 
     <input type="text" name="username" placeholder="Create Username" required>
+    <input type="email" name="email" placeholder="Email Address" required>
     <input type="password" name="password" id="password" placeholder="Create Password" required>
     <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
     <button type="submit">Register</button>
   </form>
 </main>
-    
+
   <!--js code to check if passwords match-->
   <script>
     const password = document.getElementById("password");
@@ -43,12 +49,10 @@
         confirmPassword.setCustomValidity("");
       }
     }
-    
+
     password.onchange = validatePassword;
     confirmPassword.onkeyup = validatePassword;
   </script>
 
 </body>
-
-
 </html>
