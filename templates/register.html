@@ -29,7 +29,8 @@
     <input type="text" name="last_name" placeholder="Last Name" required>
     <input type="date" name="birthdate" required>
 
-    <input type="text" name="username" placeholder="Create Username" required>
+    <input type="text" name="username" id="username" placeholder="Create Username" required>
+    <span id="username-error" style="display:block; font-size: 0.85em; margin-top: -5px; margin-bottom: 10px;"></span>
     <input type="email" name="email" placeholder="Email Address" required>
     <input type="password" name="password" id="password" placeholder="Create Password" required>
     <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
@@ -52,6 +53,39 @@
 
     password.onchange = validatePassword;
     confirmPassword.onkeyup = validatePassword;
+  </script>
+
+  <!--js code to check if username is already taken-->
+  <script>
+    const usernameInput = document.getElementById("username");
+    const usernameError = document.getElementById("username-error");
+
+    usernameInput.addEventListener("blur", async () => {
+      const username = usernameInput.value;
+      if (!username) {
+        usernameError.textContent = "";
+        usernameInput.setCustomValidity("");
+        return;
+      }
+      try{
+        const response = await fetch(`/check_username?username=${encodeURIComponent(username)}`);
+        const data = await response.json();
+        if (data.exists) {
+          usernameError.textContent = "Username already taken.";
+          usernameInput.setCustomValidity("Username already taken.");
+        } else {
+          usernameError.textContent = "";
+          usernameInput.setCustomValidity("");
+        }
+      } catch (error) {
+        console.error("Error verifying username:", error);
+      }
+
+    });
+    usernameInput.addEventListener("input", () => {
+      usernameError.textContent = "";
+      usernameInput.setCustomValidity("");
+    });
   </script>
 
 </body>

@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import mysql.connector
 import os
 from dotenv import load_dotenv
@@ -24,6 +24,25 @@ db = mysql.connector.connect(
 def home():
     return render_template("index.html")
 
+# check username availability
+@app.route("/check_username", methods=["GET"])
+def check_username():
+    username = request.args.get("username", "").strip()
+    
+    if not username:
+        return jsonify({"exists": False})
+
+    cursor = db.cursor()
+    
+    # Query your MySQL users table for an exact username match
+    sql = "SELECT user_id FROM users WHERE username = %s"
+    cursor.execute(sql, (username,))
+    existing_user = cursor.fetchone()
+    
+    cursor.close()
+
+    # Returns True if a record is found, otherwise False
+    return jsonify({"exists": bool(existing_user)})
 
 # Login page
 @app.route("/login", methods=["GET", "POST"])
