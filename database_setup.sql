@@ -114,3 +114,26 @@ CREATE TABLE IF NOT EXISTS `outfit_items` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `favorites`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `favorites` (
+  `favorite_id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `outfit_id` INT NOT NULL,
+  PRIMARY KEY (`favorite_id`),
+  UNIQUE INDEX `unique_user_outfit` (`user_id`, `outfit_id`),
+  INDEX `fk_favorites_outfit_idx` (`outfit_id`),
+  CONSTRAINT `fk_favorites_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `users` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_favorites_outfit`
+    FOREIGN KEY (`outfit_id`)
+    REFERENCES `outfits` (`outfit_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)
+ENGINE = InnoDB;

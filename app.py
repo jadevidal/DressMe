@@ -1,22 +1,28 @@
-
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify, session
 import mysql.connector
 import os
 from dotenv import load_dotenv
 from werkzeug.security import generate_password_hash, check_password_hash
+import certifi
 
 load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = os.environ["SECRET_KEY"]
 
-# Connect to MySQL
-db = mysql.connector.connect(
-    host=os.getenv("MYSQL_HOST"),
-    port=int(os.getenv("MYSQL_PORT")),
-    user=os.getenv("MYSQL_USER"),
-    password=os.getenv("MYSQL_PASSWORD"),
-    database=os.getenv("MYSQL_DATABASE")
-)
+
+# Connect to TiDB Cloud
+def get_db_connection():
+    return mysql.connector.connect(
+        host=os.getenv("MYSQL_HOST"),
+        port=int(os.getenv("MYSQL_PORT")),
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD"),
+        database=os.getenv("MYSQL_DATABASE"),
+        ssl_disabled=False,
+        ssl_ca=certifi.where(),
+        ssl_verify_cert=True
+    )
 
 
 # HOME PAGE
@@ -32,6 +38,7 @@ def check_username():
     if not username:
         return jsonify({"exists": False})
 
+    db = get_db_connection()
     cursor = db.cursor()
     
     # Query your MySQL users table for an exact username match
@@ -40,6 +47,7 @@ def check_username():
     existing_user = cursor.fetchone()
     
     cursor.close()
+    db.close()
 
     # Returns True if a record is found, otherwise False
     return jsonify({"exists": bool(existing_user)})
@@ -52,7 +60,9 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
 
+        db = get_db_connection()
         cursor = db.cursor(dictionary=True)
+
 
         sql = """
         SELECT * FROM users
@@ -63,11 +73,17 @@ def login():
         user = cursor.fetchone()
 
         cursor.close()
+        db.close()
 
         if user and check_password_hash(user["password"], password):
-            return redirect(url_for("home"))
+            session.clear()
+            session["user_id"] = user["user_id"]
+            session["username"] = user["username"]
+
+            return redirect(url_for("wardrobe"))
         else:
             return "Incorrect username or password"
+
 
     return render_template("login.html")
 
@@ -85,6 +101,7 @@ def register():
         email = request.form["email"]
         password = request.form["password"]
 
+        db = get_db_connection()
         cursor = db.cursor()
 
         # Check whether username or email already exists
@@ -97,6 +114,7 @@ def register():
 
         if existing_user:
             cursor.close()
+            db.close()
             return render_template(
                 "register.html",
                 error="Username or email already taken."
@@ -122,12 +140,19 @@ def register():
         db.commit()
 
         cursor.close()
-
+        db.close()
         # Send new user to login page
         return redirect(url_for("login"))
 
     return render_template("register.html")
 
+
+@app.route("/wardrobe")
+def wardrobe():
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    return render_template("wardrobe.html")
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001

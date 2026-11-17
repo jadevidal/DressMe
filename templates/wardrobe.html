@@ -2,20 +2,21 @@
 <html>
     <head>
         <title>DressMe Wardrobe Page</title>
-        <link rel="stylesheet" href="static/styles.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
     </head>
     
     <body>
 
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
             </ul>
         </nav>
 
         <main>
 
-            <img src="static/images/Dressme.png" 
+            <img src="{{ url_for('static', filename='images/Dressme.png') }}" 
                  alt="DressMe Logo" 
                  class="small-logo" 
                  width="300">
@@ -93,7 +94,8 @@
 
                         <div class="wardrobe-item">
 
-                            <img src="images/wardrobe1.jpg" alt="Item name">
+                            <img src="{{ url_for('static', filename='images/wardrobe1.jpg') }}" alt="Item name">
+
 
                             <p>Category</p>
 
