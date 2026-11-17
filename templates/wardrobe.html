@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DressMe Wardrobe Page</title>
+        <link rel="stylesheet" href="static/styles.css">
+    </head>
+    
+    <body>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+
+        <main>
+
+            <img src="images/Dressme.png" 
+                 alt="DressMe Logo" 
+                 class="small-logo" 
+                 width="300">
+
+
+
+                 
+            <!-- Wardrobe Wrapper -->
+            <div class="wardrobe-wrapper">
+
+                <div class="left-column">
+                    <!-- Add Item Section -->
+                    <button id="openBtn">Add Item</button>
+                    <dialog id="popupDialog">
+                        <form>
+                            <label for="itemType">Item Type:</label>
+                            <select id="itemType" name="itemType" required>
+                                <option value="">Choose Type</option>
+                                <option value="top">Top</option>
+                                <option value="bottom">Bottom</option>
+                                <option value="dress">Dress</option>
+                                <option value="outerwear">Outerwear</option>
+                                <option value="accessory">Accessory</option>
+                            </select>
+
+                            <label for="itemImage">Upload Image:</label>
+                            <input type="file" id="itemImage" name="itemImage" accept="image/*" required>
+
+                            <label for="category">Category:</label>
+                            <select id="category" name="category" required>
+                                <option value="">Choose category</option>
+                                <option value="casual">Casual</option>
+                                <option value="formal">Formal</option>
+                                <option value="sportswear">Sportswear</option>
+                                <option value="workwear">Workwear</option>
+                            </select>
+
+                            <label for="season">Season:</label>
+                            <select id="season" name="season" required>
+                                <option value="">Choose season</option>
+                                <option value="spring">Spring</option>
+                                <option value="summer">Summer</option>
+                                <option value="fall">Fall</option>
+                                <option value="winter">Winter</option>
+                            </select>
+
+                            <label for="color">Color:</label>
+                            <input type="color" id="color" name="color" value="#ff0000">
+
+                            <label for="description">Description:</label>
+                            <textarea id="description" name="description" rows="4" placeholder="Enter a description for the item"></textarea>
+
+                            <button type="submit">Submit</button>
+                            <button type="button" id="closeBtn">Close</button>
+                        </form>
+                    </dialog>
+                    <script>
+                        const openBtn = document.getElementById('openBtn');
+                        const closeBtn = document.getElementById('closeBtn');
+                        const popupDialog = document.getElementById('popupDialog');
+
+                        openBtn.addEventListener('click', () => {
+                            popupDialog.showModal();
+                        });
+
+                        closeBtn.addEventListener('click', () => {
+                            popupDialog.close();
+                        });
+                    </script>
+
+                    <!-- Wardrobe Section -->
+                    <div class="wardrobe-container">
+
+                        <h2>My Wardrobe</h2>
+
+                        <div class="wardrobe-item">
+
+                            <img src="images/wardrobe1.jpg" alt="Item name">
+
+                            <p>Category</p>
+
+                        </div>
+
+                    </div>
+                </div>  
+
+                <div class="right-column">
+                    <!--Favorites section-->
+                    <a href="favorites.html" target="_blank" rel="noopener noreferrer">Favorites</a>
+
+                    <!-- Outfit Preview Section -->
+                    <div class="outfit-container">
+
+                        <h2>My Outfit</h2>
+
+                        <div class="outfit-item">
+
+                            <img src="images/wardrobe1.jpg" alt="Item name">
+                            
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+
+
+        
+
+        </main>
+
+    </body>
+</html>

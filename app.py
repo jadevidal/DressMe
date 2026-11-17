@@ -1,17 +1,14 @@
-
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify, session
 import mysql.connector
 import os
 from dotenv import load_dotenv
 from werkzeug.security import generate_password_hash, check_password_hash
 import certifi
 
-
 load_dotenv()
 
 app = Flask(__name__)
-
-
+app.secret_key = os.environ["SECRET_KEY"]
 
 # Connect to TiDB Cloud
 db = mysql.connector.connect(
@@ -70,10 +67,16 @@ def login():
 
         cursor.close()
 
+        
         if user and check_password_hash(user["password"], password):
-            return redirect(url_for("home"))
+            session.clear()
+            session["user_id"] = user["user_id"]
+            session["username"] = user["username"]
+
+            return redirect(url_for("wardrobe"))
         else:
             return "Incorrect username or password"
+
 
     return render_template("login.html")
 
@@ -134,6 +137,13 @@ def register():
 
     return render_template("register.html")
 
+
+@app.route("/wardrobe")
+def wardrobe():
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    return render_template("wardrobe.html")
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001
