@@ -1,133 +1,206 @@
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>DressMe Wardrobe Page</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<head>
+    <title>DressMe Wardrobe</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
 
-    </head>
-    
-    <body>
+<body>
 
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-            </ul>
-        </nav>
+    <!-- Navigation -->
+    <nav class="wardrobe-nav">
 
-        <main>
+        <a href="index.html" class="nav-logo">
+            <img src="static/images/Dressme.png" alt="DressMe Logo">
+        </a>
 
-            <img src="{{ url_for('static', filename='images/Dressme.png') }}" 
-                 alt="DressMe Logo" 
-                 class="small-logo" 
-                 width="300">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">Logout</a>
+        </div>
+
+    </nav>
+
+    <main class="wardrobe-page">
+
+        <!-- Page Heading -->
+        <header class="wardrobe-header">
+
+            <div>
+                <h1>My Wardrobe</h1>
+                <p>Organize your clothes and create outfits!</p>
+            </div>
+        </header>
 
 
+        <!-- Main Dashboard -->
+        <div class="wardrobe-dashboard">
 
-                 
-            <!-- Wardrobe Wrapper -->
-            <div class="wardrobe-wrapper">
+            <!-- LEFT SIDE -->
+            <div class="wardrobe-sidebar">
 
-                <div class="left-column">
-                    <!-- Add Item Section -->
-                    <button id="openBtn">Add Item</button>
-                    <dialog id="popupDialog">
-                        <form>
-                            <label for="itemType">Item Type:</label>
-                            <select id="itemType" name="itemType" required>
-                                <option value="">Choose Type</option>
-                                <option value="top">Top</option>
-                                <option value="bottom">Bottom</option>
-                                <option value="dress">Dress</option>
-                                <option value="outerwear">Outerwear</option>
-                                <option value="accessory">Accessory</option>
-                            </select>
+                <!-- Add Item Section -->
+                <section class="dashboard-card">
 
-                            <label for="itemImage">Upload Image:</label>
-                            <input type="file" id="itemImage" name="itemImage" accept="image/*" required>
+                    <h2>Add Item</h2>
 
-                            <label for="category">Category:</label>
-                            <select id="category" name="category" required>
+                    <form class="add-item-form">
+
+                        <label for="itemName">Item Name</label>
+                        <input type="text"
+                               id="itemName"
+                               placeholder="Enter item name"
+                               required>
+
+                        <label for="categorySelect">Category</label>
+
+                        <div class="category-section">
+                            <select id="categorySelect" required>
                                 <option value="">Choose category</option>
-                                <option value="casual">Casual</option>
-                                <option value="formal">Formal</option>
-                                <option value="sportswear">Sportswear</option>
-                                <option value="workwear">Workwear</option>
                             </select>
 
-                            <label for="season">Season:</label>
-                            <select id="season" name="season" required>
-                                <option value="">Choose season</option>
-                                <option value="spring">Spring</option>
-                                <option value="summer">Summer</option>
-                                <option value="fall">Fall</option>
-                                <option value="winter">Winter</option>
-                            </select>
-
-                            <label for="color">Color:</label>
-                            <input type="color" id="color" name="color" value="#ff0000">
-
-                            <label for="description">Description:</label>
-                            <textarea id="description" name="description" rows="4" placeholder="Enter a description for the item"></textarea>
-
-                            <button type="submit">Submit</button>
-                            <button type="button" id="closeBtn">Close</button>
-                        </form>
-                    </dialog>
-                    <script>
-                        const openBtn = document.getElementById('openBtn');
-                        const closeBtn = document.getElementById('closeBtn');
-                        const popupDialog = document.getElementById('popupDialog');
-
-                        openBtn.addEventListener('click', () => {
-                            popupDialog.showModal();
-                        });
-
-                        closeBtn.addEventListener('click', () => {
-                            popupDialog.close();
-                        });
-                    </script>
-
-                    <!-- Wardrobe Section -->
-                    <div class="wardrobe-container">
-
-                        <h2>My Wardrobe</h2>
-
-                        <div class="wardrobe-item">
-
-                            <img src="{{ url_for('static', filename='images/wardrobe1.jpg') }}" alt="Item name">
-
-
-                            <p>Category</p>
-
+                            <button type="button" class="create-category-btn">
+                                + Create
+                            </button>
                         </div>
 
-                    </div>
-                </div>  
+                        <label for="season">Season</label>
 
-                <div class="right-column">
-                    <!--Favorites section-->
-                    <a href="favorites.html" target="_blank" rel="noopener noreferrer">Favorites</a>
+                        <select id="season">
+                            <option value="">Choose season</option>
+                            <option value="Spring">Spring</option>
+                            <option value="Summer">Summer</option>
+                            <option value="Fall">Fall</option>
+                            <option value="Winter">Winter</option>
+                        </select>
 
-                    <!-- Outfit Preview Section -->
-                    <div class="outfit-container">
+                        <label for="color">Color</label>
+                        <input type="color" id="color">
 
-                        <h2>My Outfit</h2>
+                        <label for="description">Description</label>
+                        <textarea id="description"
+                                  placeholder="Add a description..."></textarea>
 
-                        <div class="outfit-item">
+                        <label for="imageUpload">Upload Image</label>
+                        <input type="file"
+                               id="imageUpload"
+                               accept="image/*">
 
-                            <img src="images/wardrobe1.jpg" alt="Item name">
-                            
-                        </div>
+                        <button type="submit" class="pink-button">
+                            Add Item
+                        </button>
 
-                    </div>
-                </div>
-                
+                    </form>
+
+                </section>
+
+
+
+
             </div>
 
 
-        
+            <!-- RIGHT SIDE -->
+            <section class="dashboard-card clothing-section">
 
-        </main>
+                <div class="section-heading">
+                    <div>
+                        <h2>My Clothing</h2>
+                        <p>View and organize clothing items.</p>
+                    </div>
+                </div>
 
-    </body>
+                <!-- Search and Filters -->
+                <div class="wardrobe-filters">
+
+                    <input type="search"
+                           placeholder="Search clothing...">
+
+                    <select>
+                        <option value="">All Categories</option>
+                    </select>
+
+                    <select>
+                        <option value="">All Seasons</option>
+                        <option>Spring</option>
+                        <option>Summer</option>
+                        <option>Fall</option>
+                        <option>Winter</option>
+                    </select>
+
+                </div>
+
+
+                <!-- Clothing Grid -->
+                <div class="wardrobe-grid">
+
+                    <div class="wardrobe-item">
+                        <img src="images/wardrobe1.jpg"
+                             alt="Clothing item">
+                        <h3>Clothing Item 1</h3>
+                        <p>Category</p>
+                    </div>
+
+                    <div class="wardrobe-item">
+                        <img src="images/wardrobe2.jpg"
+                             alt="Clothing item">
+                        <h3>Clothing Item 2</h3>
+                        <p>Category</p>
+                    </div>
+
+                    <div class="wardrobe-item">
+                        <img src="images/wardrobe3.jpg"
+                             alt="Clothing item">
+                        <h3>Clothing Item 3</h3>
+                        <p>Category</p>
+                    </div>
+
+                    <div class="wardrobe-item">
+                        <img src="images/wardrobe4.jpg"
+                             alt="Clothing item">
+                        <h3>Clothing Item 4</h3>
+                        <p>Category</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- Outfit Preview Section -->
+        <section class="dashboard-card outfit-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Create an Outfit</h2>
+                    <p>Select clothing items to put together an outfit.</p>
+                </div>
+            </div>
+
+            <div class="outfit-preview">
+
+                <div class="outfit-placeholder">
+                    <p>clothing items</p>
+                </div>
+
+            </div>
+
+            <div class="outfit-buttons">
+                <button type="button" class="outline-button">
+                    Clear Outfit
+                </button>
+
+                <button type="button" class="pink-button">
+                    Save Outfit
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
 </html>
