@@ -4,20 +4,26 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 from werkzeug.security import generate_password_hash, check_password_hash
+import certifi
+
 
 load_dotenv()
 
 app = Flask(__name__)
 
-# Connect to MySQL
+
+
+# Connect to TiDB Cloud
 db = mysql.connector.connect(
     host=os.getenv("MYSQL_HOST"),
     port=int(os.getenv("MYSQL_PORT")),
     user=os.getenv("MYSQL_USER"),
     password=os.getenv("MYSQL_PASSWORD"),
-    database=os.getenv("MYSQL_DATABASE")
+    database=os.getenv("MYSQL_DATABASE"),
+    ssl_disabled=False,
+    ssl_ca=certifi.where(),
+    ssl_verify_cert=True
 )
-
 
 # HOME PAGE
 @app.route("/")
